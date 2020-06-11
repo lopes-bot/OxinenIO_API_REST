@@ -1,0 +1,9 @@
+{
+  "name": "OxinenIO_API_REST",
+  "version": "1.0.0",
+  "description": "Api criada para o social hack",
+  "main": "serve.js",
+  "repository": "https://github.com/lopes-bot/OxinenIO_API_REST.git",
+  "author": "lopes-bot <andrelopessfla@gmail.com>",
+  "license": "MIT"
+}
