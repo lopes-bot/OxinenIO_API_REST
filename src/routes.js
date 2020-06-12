@@ -12,6 +12,7 @@ routes.post("/users", UserControllers.store);
 routes.get("/users/:id", UserControllers.show);
 routes.put("/users/:id", UserControllers.update);
 routes.get("/users",UserControllers.index);
+routes.delete("/users/:id", UserControllers.delete);
 
 
 module.exports = routes; 

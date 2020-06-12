@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const Uploade = require('../models/Upload');
 const Chat = require('../models/Chat');
-const { delete } = require('../routes');
-//const { update } = require('../models/User');
+
 
 module.exports = {
  //-----------------------------------------//
@@ -72,7 +71,17 @@ module.exports = {
 //-----------------------------------------------------//
  async delete(req,res){
    const user = await User.findByIdAndRemove(req.params.id);
-   console.log("deletando"+ user);
+   if(user){
+     res.json({
+       erro: false,
+       message:"user successfully deleted",
+     })
+   }else{
+     res.status(400).json({
+       erro: true,
+       message:"it was not possible to delete the user",
+     })
+   }
  }
 
 }
