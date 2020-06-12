@@ -14,6 +14,7 @@ app.use(require("./routes"));
 app.use(morgan('dev'));
 //mongoose  config
 mongoose.connect('mongodb://localhost:27017/oxigenIO',{
+  useUnifiedTopology: true,
   useNewUrlParser: true,
 });
 //config session

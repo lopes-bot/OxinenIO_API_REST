@@ -4,6 +4,21 @@ const Uploade = require('../models/Upload');
 const Chat = require('../models/Chat');
 const Upload = require('../models/Upload');
 const bcrypt = require('bcryptjs');
+const JWT = require('jsonwebtoken');
+const {JWT_SECRET} = require('../config/index');
+
+signToken = (user) => {
+
+  return JWT.sign(
+    {
+      iss: "CodeWorkr",
+      sub: user.id,
+      iat: new Date().getTime(),
+      exp: new Date().setDate(new Date().getDate() + 1),
+    },
+    JWT_SECRET
+  );
+};
 
 
 module.exports = {
@@ -91,6 +106,7 @@ module.exports = {
    }
  },
  //-----------------------------------------------------------//
+  //controle para uplode de fotos//
  async uploads(req ,res){
    
    const {originalname: name ,size ,filename:key }= req.file;
@@ -102,6 +118,16 @@ module.exports = {
      userId: req.params.id,
    })
    return res.json(photos);
+ },
+ //--------------------------------------------------------------//
+ async secret(req,res,next){
+
+    const token = signToken(req.user);
+    return res.status(200).json({
+      token,
+      email:req.user.email,
+    }) 
+  
  }
 
 }
