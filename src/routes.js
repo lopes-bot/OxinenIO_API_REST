@@ -10,6 +10,7 @@ routes.post("/posts",multer(multerConfig).single('file'),(req,res)=>{
 });
 routes.post("/users", UserControllers.store);
 routes.get("/users/:id", UserControllers.show);
+routes.put("/users/:id", UserControllers.update);
 
 
 module.exports = routes; 
