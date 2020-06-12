@@ -9,6 +9,7 @@ routes.post("/posts",multer(multerConfig).single('file'),(req,res)=>{
   res.json({Hello:"Word"});
 });
 routes.post("/users", UserControllers.store);
+routes.get("/users/:id", UserControllers.show);
 
 
 module.exports = routes; 

@@ -9,6 +9,11 @@ module.exports = {
   async store(req,res){
     const users = await User.create(req.body);
     res.json({users});
-  }
+  },
 //-----------------------------------------//
+//-----------------------------------------//
+  async show(req, res){
+    const user = await User.findById(req.params.id);
+    res.json({user});
+  }
 }
