@@ -6,6 +6,10 @@
   "repository": "https://github.com/lopes-bot/OxinenIO_API_REST.git",
   "author": "lopes-bot <andrelopessfla@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev":"nodemon src/index.js",
+    "start":"node src/index.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.9.18",
