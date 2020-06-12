@@ -120,6 +120,7 @@ module.exports = {
    return res.json(photos);
  },
  //--------------------------------------------------------------//
+ //controle para login
  async secret(req,res,next){
 
     const token = signToken(req.user);
@@ -128,6 +129,11 @@ module.exports = {
       email:req.user.email,
     }) 
   
+ },
+
+ async logout(req,res){
+   req.logout();
+   res.send("pagina principal")
  }
 
 }

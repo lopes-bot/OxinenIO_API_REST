@@ -12,6 +12,7 @@ routes.put("/users/:id", UserControllers.update);
 routes.get("/users",UserControllers.index);
 routes.delete("/users/:id", UserControllers.delete);
 routes.route("/login").post(passport.authenticate("local", { session: false}),UserControllers.secret);
+routes.get("/logout",UserControllers.logout);
 
 
 module.exports = routes; 
