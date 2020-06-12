@@ -2,6 +2,7 @@ const express = require('express');
 const Port = 3000;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+
 //iniciando app
 const app = express();
 app.use(express.json());

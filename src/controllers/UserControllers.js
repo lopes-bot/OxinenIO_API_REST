@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const Uploade = require('../models/Upload');
 const Chat = require('../models/Chat');
+const Upload = require('../models/Upload');
 
 
 module.exports = {
@@ -82,6 +83,19 @@ module.exports = {
        message:"it was not possible to delete the user",
      })
    }
+ },
+ //-----------------------------------------------------------//
+ async uploads(req ,res){
+   
+   const {originalname: name ,size ,filename:key }= req.file;
+   const photos = await Upload.create({
+     name,
+     size,
+     key,
+     url:"",
+     userId: req.params.id,
+   })
+   return res.json(photos);
  }
 
 }
