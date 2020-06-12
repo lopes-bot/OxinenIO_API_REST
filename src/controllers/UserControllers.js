@@ -9,7 +9,17 @@ module.exports = {
  //controle para cadastro de usuario//
   async store(req,res){
     const users = await User.create(req.body);
-    res.json({users});
+    if(users){
+      res.status(200).json({
+        erro: false,
+        message:"user successfully registered",
+      });
+    }else{
+      res.status(400).json({
+        erro: true,
+        message:"user registration failure",
+      })
+    }
   },
 //-----------------------------------------//
 //-----------------------------------------//
@@ -22,6 +32,18 @@ module.exports = {
   //controle para editar dados do usuario//
   async update(req, res){
     const user = await User.findByIdAndUpdate(req.params.id, req.body,{new: true});
-    res.json({user});
-  }
+    if(user){
+      res.status(200).json({
+        erro: false,
+        message:"Successfully changed data",
+      });
+    }else{
+      res.status(400).json({
+        erro: true,
+        message: "error when updating",
+      })
+    }
+  },
+//-----------------------------------------//
+  
 }
