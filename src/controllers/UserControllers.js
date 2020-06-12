@@ -45,5 +45,10 @@ module.exports = {
     }
   },
 //-----------------------------------------//
-  
+//controle para listar usuarios com limite de 10 por paginas//
+  async index(req,res){
+    const{page = 1} = req.query;
+    const users = await User.paginate({},{page, limit: 10});
+    res.json({users});
+  }
 }
