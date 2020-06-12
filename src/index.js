@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
+require('./auth/passport')(passport);
 
 //iniciando app
 const app = express();
