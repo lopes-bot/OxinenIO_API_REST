@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const Uploade = require('../models/Upload');
 const Chat = require('../models/Chat');
-const { update } = require('../models/User');
+//const { update } = require('../models/User');
 
 module.exports = {
  //-----------------------------------------//
@@ -26,7 +26,15 @@ module.exports = {
   //controle para buscar usuarios pelo id//
   async show(req, res){
     const user = await User.findById(req.params.id);
-    res.json({user});
+    if(user){
+      res.json({user});
+    }else{
+      res.status(400).json({
+        erro:true,
+        message:"User not found",
+      })
+    }
+    
   },
 //----------------------------------------//
   //controle para editar dados do usuario//
@@ -49,6 +57,16 @@ module.exports = {
   async index(req,res){
     const{page = 1} = req.query;
     const users = await User.paginate({},{page, limit: 10});
-    res.json({users});
-  }
+    if(users){
+      res.json({users});
+    }else{
+      res.status(400).json({
+        erro: true,
+        message:"there are no users registered on the data base",
+      });
+    }
+    
+  },
+//------------------------------------------//
+
 }
