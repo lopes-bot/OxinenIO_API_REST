@@ -3,13 +3,19 @@ const User = require('../models/User');
 const Uploade = require('../models/Upload');
 const Chat = require('../models/Chat');
 const Upload = require('../models/Upload');
+const bcrypt = require('bcryptjs');
 
 
 module.exports = {
  //-----------------------------------------//
  //controle para cadastro de usuario//
   async store(req,res){
-    const users = await User.create(req.body);
+    var values = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(values.password, salt);
+    values.password = hash;
+    
+    const users = await User.create(values);
     if(users){
       res.status(200).json({
         erro: false,
