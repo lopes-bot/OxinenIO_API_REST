@@ -104,6 +104,14 @@ module.exports = {
      })
    }
  },
+ //-------------------------------------------------------------//
+ async address(req, res){
+   const users = await User.find({
+     Address:req.body.Address
+   });
+   return res.json(users);
+
+ },
  
  //--------------------------------------------------------------//
  //controle para login

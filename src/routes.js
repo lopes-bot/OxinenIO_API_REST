@@ -17,6 +17,7 @@ routes.get("/users/:id", UserControllers.show);
 routes.put("/users/:id", UserControllers.update);
 routes.get("/users",UserControllers.index);
 routes.delete("/users/:id", UserControllers.delete);
+routes.post("/users/Address", UserControllers.address);
 //---------------------------------------------------------------//
 //rotas de autenticação
 routes.route("/login").post(passport.authenticate("local", { session: false}),UserControllers.secret);
