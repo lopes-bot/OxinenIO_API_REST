@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const path = require('path');
+const cors = require('cors');
 require('./auth/passport')(passport);
 
 
@@ -13,6 +14,7 @@ require('./auth/passport')(passport);
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors());
 app.use(require("./routes"));
 app.use(morgan('dev'));
 //mongoose  config
