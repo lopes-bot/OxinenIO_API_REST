@@ -151,6 +151,14 @@ module.exports = {
      erro: false,
      message:"photo removed",
    })
+ },
+ //-----------------------------------------------------------//
+ //controle pra lista fotos do usuario//
+ async userUpload(req, res){
+  const photos = await Upload.find({
+    userId:req.params.id
+  });
+  return res.json(photos);
  }
 
 }
