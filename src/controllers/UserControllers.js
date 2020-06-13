@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
-const Uploade = require('../models/Upload');
 const Chat = require('../models/Chat');
 const Upload = require('../models/Upload');
 const bcrypt = require('bcryptjs');
@@ -105,21 +104,7 @@ module.exports = {
      })
    }
  },
- //-----------------------------------------------------------//
-  //controle para uplode de fotos//
- async uploads(req ,res){
-   
-   const {originalname: name ,size ,filename:key }= req.file;
-   const photos = await Upload.create({
-     name,
-     size,
-     key,
-     url:"",
-     userId: req.params.id,
-   })
-   return res.json(photos);
- },
- //--------------------------------------------------------------//
+ 
  //--------------------------------------------------------------//
  //controle para login
  async secret(req,res,next){
@@ -143,6 +128,22 @@ module.exports = {
    return res.json(photos);
  },
  //-----------------------------------------------------------//
+  //controle para uplode de fotos//
+  async uploads(req ,res){
+   
+    const {originalname: name ,size ,filename:key }= req.file;
+    const photos = await Upload.create({
+      name,
+      size,
+      key,
+      url:"",
+      userId: req.params.id,
+    })
+    return res.json(photos);
+  },
+  //--------------------------------------------------------------//
+ //-----------------------------------------------------------//
+ //controle para deleter upload//
  async delUpload(req, res){
    const photo = await Upload.findById(req.params.id);
    await photo.remove();
