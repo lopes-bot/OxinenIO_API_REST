@@ -6,6 +6,7 @@ const passport = require('passport');
 
 
 routes.post("/photos/:id",multer(multerConfig).single('file'),UserControllers.uploads);
+routes.get("/showUploads", UserControllers.showUpload);
 routes.post("/users", UserControllers.store);
 routes.get("/users/:id", UserControllers.show);
 routes.put("/users/:id", UserControllers.update);

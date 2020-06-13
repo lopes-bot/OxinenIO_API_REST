@@ -120,6 +120,7 @@ module.exports = {
    return res.json(photos);
  },
  //--------------------------------------------------------------//
+ //--------------------------------------------------------------//
  //controle para login
  async secret(req,res,next){
 
@@ -133,7 +134,13 @@ module.exports = {
 
  async logout(req,res){
    req.logout();
-   res.send("pagina principal")
+   res.send("pagina principal");
+ },
+ //-------------------------------------------------------//
+ // controle para lista todos os uploads de fotos//
+ async showUpload(req, res){
+   const photos = await Upload.find();
+   return res.json(photos);
  }
 
 }
