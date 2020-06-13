@@ -22,6 +22,8 @@ routes.post("/users/Address", UserControllers.address);
 //rotas de autenticação
 routes.route("/login").post(passport.authenticate("local", { session: false}),UserControllers.secret);
 routes.get("/logout",UserControllers.logout);
-
+routes.get("/",(req,res)=>{
+  res.send("hello word");
+})
 
 module.exports = routes; 
