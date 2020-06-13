@@ -141,6 +141,15 @@ module.exports = {
  async showUpload(req, res){
    const photos = await Upload.find();
    return res.json(photos);
+ },
+ //-----------------------------------------------------------//
+ async delUpload(req, res){
+   const photo = await Upload.findById(req.params.id);
+   await photo.remove();
+   return res.json({
+     erro: false,
+     message:"photo removed",
+   })
  }
 
 }
