@@ -49,7 +49,12 @@ const UserSchema = new mongoose.Schema({
   AboutUser:{
     type: String,
   },
-  
+  evaluation:{
+    type:String,
+  },
+  profilePicture:{
+    type:String,
+  }, 
   createAt:{
     type: Date,
     default: Date.now

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const APP_URL = process.env.APP_URL ||"http://localhost:3000";
+const APP_URL = process.env.APP_URL  ||"http://localhost:3000";
 const fs = require('fs');
 const path = require('path');
 const {promisify}= require('util');
@@ -8,7 +8,6 @@ const UploadSchema = new mongoose.Schema({
 
     userId:{
       type: String,
-      required: true,
     },
     name:{
       type: String,
