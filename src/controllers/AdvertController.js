@@ -5,7 +5,22 @@ const Advert = require('../models/Advert');
 
 module.exports ={
   async advertstore(req, res){
-    const advert = await Advert.create(req.body);
+    var userId = req.params.userId;
+    
+    const { photoAdvert,
+            responsiblePerson,
+            serviceAddress,
+            serviceHours,
+            briefDescription} = req.body;
+
+    const advert = await Advert.create({
+            photoAdvert,
+            responsiblePerson,
+            serviceAddress,
+            serviceHours,
+            briefDescription,
+            userId
+    });
     return res.status(200).json(advert);
   },
   async advertshow(req, res){
