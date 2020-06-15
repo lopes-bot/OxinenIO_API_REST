@@ -4,6 +4,7 @@ const multerConfig = require('./config/multer');
 const UserControllers = require('./controllers/UserControllers');
 const passport = require('passport');
 
+
 //----------------------------------------------------------------------------------------//
 //routas de uploads
 routes.post("/photos/:id",multer(multerConfig).single('file'),UserControllers.uploads);
@@ -22,6 +23,9 @@ routes.post("/users/Address", UserControllers.address);
 //rotas de autenticação
 routes.route("/login").post(passport.authenticate("local", { session: false}),UserControllers.secret);
 routes.get("/logout",UserControllers.logout);
+//---------------------------------------------------------------//
+
+
 
 
 module.exports = routes; 
