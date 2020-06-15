@@ -54,7 +54,22 @@ const UserSchema = new mongoose.Schema({
   },
   profilePicture:{
     type:String,
-  }, 
+  }, photoAdvert:{
+    type:String,
+  },
+  responsiblePerson:{
+    type:String,
+  },
+
+  serviceAddress:{
+    type:String,
+  },
+  serviceHours:{
+    type:String,
+  },
+  briefDescription:{
+    type:String,
+  },
   createAt:{
     type: Date,
     default: Date.now
