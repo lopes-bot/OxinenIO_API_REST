@@ -6,7 +6,7 @@ const Advert = require('../models/Advert');
 module.exports ={
   async advertstore(req, res){
     var userId = req.params.userId;
-    
+
     const { photoAdvert,
             responsiblePerson,
             serviceAddress,
@@ -28,7 +28,7 @@ module.exports ={
     return res.status(200).json(adverts);
   },
   async advertshowUser(req, res){
-    const adverts = await  Advert.find({userId:req.params.id});
+    const adverts = await  Advert.find({userId:req.params.userId});
     return res.status(200).json(adverts);
   },
   async advertupdate(req, res){
