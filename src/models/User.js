@@ -70,6 +70,15 @@ const UserSchema = new mongoose.Schema({
   briefDescription:{
     type:String,
   },
+  service:{
+    type:String,
+  },
+  value:{
+    type:String,
+  },
+  neededService:{
+    type:String,
+  },
   createAt:{
     type: Date,
     default: Date.now

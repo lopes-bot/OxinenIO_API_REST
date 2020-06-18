@@ -26,6 +26,4 @@ routes.get("/logout",UserControllers.logout);
 //---------------------------------------------------------------//
 
 
-
-
 module.exports = routes; 
