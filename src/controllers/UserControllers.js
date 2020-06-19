@@ -118,9 +118,11 @@ module.exports = {
  async secret(req,res,next){
 
     const token = signToken(req.user);
+    console.log(req.user);
     return res.status(200).json({
       token,
       email:req.user.email,
+      _id:req.user._id,
     }) 
   
  },
