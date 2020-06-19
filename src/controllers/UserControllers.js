@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const JWT = require('jsonwebtoken');
 const {JWT_SECRET} = require('../config/index');
 
+
 signToken = (user) => {
 
   return JWT.sign(
@@ -137,7 +138,6 @@ module.exports = {
  //-----------------------------------------------------------//
   //controle para uplode de fotos//
   async uploads(req ,res){
-   
     const {originalname: name ,size ,filename:key }= req.file;
     const photos = await Upload.create({
       name,
@@ -146,7 +146,18 @@ module.exports = {
       url:"",
       userId: req.params.id,
     })
-    return res.json(photos);
+    if(photos){
+      var values = req.body;
+      values.photoAdvert = photos.url
+      const user = await User.findByIdAndUpdate(req.params.id, values,{new: true});
+      return res.json(photos);
+    } else{
+      return res.status(400).json({
+        erro:true,
+        messege:"erro upload"
+      })
+    }
+    
   },
   //--------------------------------------------------------------//
  //-----------------------------------------------------------//
