@@ -4,6 +4,7 @@ const multerConfig = require('./config/multer');
 const UserControllers = require('./controllers/UserControllers');
 const passport = require('passport');
 
+routes.post("/advert/:id",multer(multerConfig).single('file'),UserControllers.AdvertStore);
 
 //----------------------------------------------------------------------------------------//
 //routas de uploads

@@ -61,24 +61,6 @@ const UserSchema = new mongoose.Schema({
     type:String,
   },
 
-  serviceAddress:{
-    type:String,
-  },
-  serviceHours:{
-    type:String,
-  },
-  briefDescription:{
-    type:String,
-  },
-  service:{
-    type:String,
-  },
-  value:{
-    type:String,
-  },
-  neededService:{
-    type:String,
-  },
   createAt:{
     type: Date,
     default: Date.now

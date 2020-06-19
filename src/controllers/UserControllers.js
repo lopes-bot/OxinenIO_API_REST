@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
 const Upload = require('../models/Upload');
+const Advert = require('../models/Advert');
 const bcrypt = require('bcryptjs');
 const JWT = require('jsonwebtoken');
 const {JWT_SECRET} = require('../config/index');
@@ -179,5 +180,30 @@ module.exports = {
     userId:req.params.id
   });
   return res.json(photos);
+ },
+ async AdvertStore(req,res){
+  const {originalname: name ,size ,filename:key }= req.file;
+  const photos = await Upload.create({
+    name,
+    size,
+    key,
+    url:"",
+    userId: req.params.id,
+  })
+  if(photos){
+    var values = req.body;
+    values.photoAdvert = photos.url;
+    values.userId= req.params.id;
+    const adverts = await Advert.create(values);
+    if(adverts){
+      return res.json(adverts);
+    }
+    
+  } else{
+    return res.status(400).json({
+      erro:true,
+      messege:"erro upload"
+    })
+  }
  }
 }
