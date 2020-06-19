@@ -181,6 +181,7 @@ module.exports = {
   });
   return res.json(photos);
  },
+//------------------------------------------------------//
  async AdvertStore(req,res){
   const {originalname: name ,size ,filename:key }= req.file;
   const photos = await Upload.create({
@@ -205,5 +206,17 @@ module.exports = {
       messege:"erro upload"
     })
   }
+ },
+ //-----------------------------------------------------------/
+ async showAdvert(req,res){
+   const adverts = await Advert.find({userId:req.params.id});
+   if(adverts){
+     return res.json(adverts);
+   }else{
+     return res.status(200).json({
+       erro:true,
+       message:"error fetching ads"
+     })
+   }
  }
 }
