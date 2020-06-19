@@ -14,7 +14,7 @@ routes.delete("/deleteUpload/:id", UserControllers.delUpload);
 routes.get("/showUPloadsUser/:id", UserControllers.userUpload);
 //---------------------------------------------------------------//
 //routas de usuarios
-routes.post("/users", UserControllers.store);
+routes.post("/users",multer(multerConfig).single('file'),UserControllers.store);
 routes.get("/users/:id", UserControllers.show);
 routes.put("/users/:id", UserControllers.update);
 routes.get("/users",UserControllers.index);

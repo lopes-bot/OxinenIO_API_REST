@@ -29,15 +29,22 @@ module.exports = {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(values.password, salt);
     values.password = hash;
+   
+    const {originalname: name ,size ,filename:key }= req.file;
+    const photos = await Upload.create({
+        name,
+        size,
+        key,
+        url:"",
+        userId: req.params.id,
+      })
     
-    const users = await User.create(values);
-    if(users){
-      res.status(200).json({
-        erro: false,
-        message:"user successfully registered",
-      });
+    if(photos){
+          values.profilePicture= photos.url
+          const users = await User.create(values);
+          return res.json(users);
     }else{
-      res.status(400).json({
+     return res.status(400).json({
         erro: true,
         message:"user registration failure",
       })

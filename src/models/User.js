@@ -54,11 +54,6 @@ const UserSchema = new mongoose.Schema({
   },
   profilePicture:{
     type:String,
-  }, photoAdvert:{
-    type:String,
-  },
-  responsiblePerson:{
-    type:String,
   },
 
   createAt:{
